@@ -1,8 +1,8 @@
 <?php
 
-use Guratr\CommandRunner\Http\Controllers\HistoryController;
-use Guratr\CommandRunner\Http\Controllers\CommandsController;
 use Illuminate\Support\Facades\Route;
+use Workup\Nova\CommandRunner\Http\Controllers\HistoryController;
+use Workup\Nova\CommandRunner\Http\Controllers\CommandsController;
 
 /*
 |--------------------------------------------------------------------------

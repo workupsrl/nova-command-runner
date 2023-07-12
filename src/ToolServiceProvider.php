@@ -1,12 +1,12 @@
 <?php
 
-namespace Guratr\CommandRunner;
+namespace Workup\Nova\CommandRunner;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Guratr\CommandRunner\Http\Middleware\Authorize;
+use Workup\Nova\CommandRunner\Http\Middleware\Authorize;
 
 class ToolServiceProvider extends ServiceProvider
 {
@@ -18,10 +18,10 @@ class ToolServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/nova-command-runner.php' => config_path('nova-command-runner.php'),
+            __DIR__ . '/../config/nova-command-runner.php' => config_path('nova-command-runner.php'),
         ], 'config');
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'command-runner');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'command-runner');
 
         $this->app->booted(function () {
             $this->routes();
@@ -44,8 +44,8 @@ class ToolServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova', Authorize::class])
-                ->prefix('nova-vendor/guratr/command-runner')
-                ->group(__DIR__.'/../routes/api.php');
+            ->prefix('nova-vendor/guratr/command-runner')
+            ->group(__DIR__ . '/../routes/api.php');
     }
 
     /**

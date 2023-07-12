@@ -1,14 +1,17 @@
 <?php
 
-namespace Guratr\CommandRunner\Http\Controllers;
+namespace Workup\Nova\CommandRunner\Http\Controllers;
+
+use Cache;
+use Carbon\Carbon;
 
 class HistoryController
 {
     public function index()
     {
-        $history = \Cache::get('nova-command-runner-history', []);
+        $history = Cache::get('nova-command-runner-history', []);
         array_walk($history, function (&$val) {
-            $val['time'] = \Carbon\Carbon::createFromTimestamp($val['time'])->diffForHumans();
+            $val['time'] = Carbon::createFromTimestamp($val['time'])->diffForHumans();
         });
 
         return $history;

@@ -29,7 +29,7 @@ public function tools()
 {
     return [
         // ...
-        new \Guratr\CommandRunner\CommandRunner,
+        new \Workup\Nova\CommandRunner\CommandRunner,
     ];
 }
 ```
@@ -37,7 +37,7 @@ public function tools()
 Publish the config file:
 
 ``` bash
-php artisan vendor:publish --provider="Guratr\CommandRunner\ToolServiceProvider"
+php artisan vendor:publish --provider="Workup\Nova\CommandRunner\ToolServiceProvider"
 ```
 
 Add your commands to config/nova-command-runner.php

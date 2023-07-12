@@ -1,17 +1,21 @@
 <?php
 
-namespace Guratr\CommandRunner\Http\Middleware;
+namespace Workup\Nova\CommandRunner\Http\Middleware;
 
-use Guratr\CommandRunner\CommandRunner;
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Workup\Nova\CommandRunner\CommandRunner;
 
 class Authorize
 {
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  Closure  $next
+     *
+     * @return Response
      */
     public function handle($request, $next)
     {
