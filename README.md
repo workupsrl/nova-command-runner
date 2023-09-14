@@ -1,3 +1,7 @@
+# Changed fork repo to: https://github.com/stepanenko3/nova-command-runner
+
+--- 
+
 # Laravel Nova tool for running Artisan & Shell commands
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/stepanenko3/nova-command-runner.svg?style=flat-square)](https://packagist.org/packages/stepanenko3/nova-command-runner)
