@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Workup\Nova\CommandRunner\Http\Controllers\HistoryController;
 use Workup\Nova\CommandRunner\Http\Controllers\CommandsController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +14,7 @@ use Workup\Nova\CommandRunner\Http\Controllers\CommandsController;
 |
 */
 
-Route::get('/commands', CommandsController::class . '@index');
-Route::post('/commands/{index}/run', CommandsController::class . '@run');
-
-Route::get('/history', HistoryController::class . '@index');
-
+Route::controller(CommandsController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::post('/run', 'run');
+});

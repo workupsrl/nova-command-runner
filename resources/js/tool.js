@@ -1,9 +1,5 @@
-Nova.booting((Vue, router) => {
-    router.addRoutes([
-        {
-            name: 'command-runner',
-            path: '/command-runner',
-            component: require('./components/Tool'),
-        },
-    ])
+import Tool from './pages/Tool'
+
+Nova.booting((app, store) => {
+  Nova.inertia('NovaCommandRunner', Tool)
 })

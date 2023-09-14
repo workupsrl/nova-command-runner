@@ -17,11 +17,7 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/../config/nova-command-runner.php' => config_path('nova-command-runner.php'),
-        ], 'config');
-
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'command-runner');
+        $this->config();
 
         $this->app->booted(function () {
             $this->routes();
@@ -43,8 +39,11 @@ class ToolServiceProvider extends ServiceProvider
             return;
         }
 
+        Nova::router(['nova', Authorize::class], config('nova-command-runner.path', 'command-runner'))
+            ->group(__DIR__ . '/../routes/inertia.php');
+
         Route::middleware(['nova', Authorize::class])
-            ->prefix('nova-vendor/guratr/command-runner')
+            ->prefix('nova-vendor/workup/nova-command-runner')
             ->group(__DIR__ . '/../routes/api.php');
     }
 
@@ -56,5 +55,19 @@ class ToolServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    private function config()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/' => config_path(),
+            ], 'config');
+        }
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/nova-command-runner.php',
+            'nova-command-runner'
+        );
     }
 }

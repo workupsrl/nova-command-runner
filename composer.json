@@ -1,16 +1,25 @@
 {
     "name": "workup/nova-command-runner",
-    "description": "Laravel Nova tool for running Artisan commands.",
+    "description": "Laravel Nova tool for running Artisan and bash(shell) commands.",
     "keywords": [
         "laravel",
         "nova",
         "Artisan",
-        "commands"
+        "commands",
+        "shell",
+        "bash"
     ],
     "license": "MIT",
     "require": {
-        "php": ">=7.1.0"
+        "php": ">=8.0",
+        "laravel/nova": "^4.0"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Workup\\Nova\\CommandRunner\\": "src/"
@@ -26,6 +35,6 @@
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
